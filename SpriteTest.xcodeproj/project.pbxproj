@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E58E8231CFC7FDB00422349 /* fejizidan.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4E58E8211CFC7FDB00422349 /* fejizidan.sks */; };
+		4E58E8241CFC7FDB00422349 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E58E8221CFC7FDB00422349 /* spark.png */; };
 		4E80E8FA1CFC40C30069DCED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80E8F91CFC40C30069DCED /* AppDelegate.swift */; };
 		4E80E8FC1CFC40C30069DCED /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4E80E8FB1CFC40C30069DCED /* GameScene.sks */; };
 		4E80E8FE1CFC40C30069DCED /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E80E8FD1CFC40C30069DCED /* GameScene.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E58E8211CFC7FDB00422349 /* fejizidan.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = fejizidan.sks; path = SpriteTest/fejizidan.sks; sourceTree = "<group>"; };
+		4E58E8221CFC7FDB00422349 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = SpriteTest/spark.png; sourceTree = "<group>"; };
 		4E80E8F61CFC40C30069DCED /* SpriteTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E80E8F91CFC40C30069DCED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E80E8FB1CFC40C30069DCED /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -42,6 +46,8 @@
 		4E80E8ED1CFC40C30069DCED = {
 			isa = PBXGroup;
 			children = (
+				4E58E8211CFC7FDB00422349 /* fejizidan.sks */,
+				4E58E8221CFC7FDB00422349 /* spark.png */,
 				4E80E8F81CFC40C30069DCED /* SpriteTest */,
 				4E80E8F71CFC40C30069DCED /* Products */,
 			);
@@ -129,7 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E80E8FC1CFC40C30069DCED /* GameScene.sks in Resources */,
+				4E58E8241CFC7FDB00422349 /* spark.png in Resources */,
 				4E80E9081CFC40C30069DCED /* LaunchScreen.storyboard in Resources */,
+				4E58E8231CFC7FDB00422349 /* fejizidan.sks in Resources */,
 				4E80E9051CFC40C30069DCED /* Assets.xcassets in Resources */,
 				4E80E9031CFC40C30069DCED /* Main.storyboard in Resources */,
 			);
@@ -294,6 +302,7 @@
 				4E80E90E1CFC40C30069DCED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
