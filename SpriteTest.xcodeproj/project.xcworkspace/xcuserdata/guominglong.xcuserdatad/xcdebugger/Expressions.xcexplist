@@ -3,10 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "GameScene.createZiDan2() -&gt; ():GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.children">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "GameScene.(gmlinit in _4F15691A5732C54912789C61526990A0)() -&gt; ():GameScene.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.update(Double) -&gt; ():GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self[&quot;zidan&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "self.childNodeWithName(&quot;zidan&quot;)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
