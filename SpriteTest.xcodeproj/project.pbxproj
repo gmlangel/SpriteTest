@@ -17,6 +17,8 @@
 		4E80E9051CFC40C30069DCED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E80E9041CFC40C30069DCED /* Assets.xcassets */; };
 		4E80E9081CFC40C30069DCED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E80E9061CFC40C30069DCED /* LaunchScreen.storyboard */; };
 		4E86030B1CFD34B30032ABAD /* gmlassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E86030A1CFD34B30032ABAD /* gmlassets */; };
+		4E86030D1CFD71860032ABAD /* AniScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E86030C1CFD71860032ABAD /* AniScene.swift */; };
+		4E8603111CFD788B0032ABAD /* renwu1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 4E8603101CFD788B0032ABAD /* renwu1.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		4E80E9071CFC40C30069DCED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E80E9091CFC40C30069DCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E86030A1CFD34B30032ABAD /* gmlassets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = gmlassets; path = SpriteTest/gmlassets; sourceTree = "<group>"; };
+		4E86030C1CFD71860032ABAD /* AniScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AniScene.swift; sourceTree = "<group>"; };
+		4E8603101CFD788B0032ABAD /* renwu1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = renwu1.atlas; path = SpriteTest/atlas/renwu1.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,7 @@
 		4E80E8ED1CFC40C30069DCED = {
 			isa = PBXGroup;
 			children = (
+				4E8603101CFD788B0032ABAD /* renwu1.atlas */,
 				4E86030A1CFD34B30032ABAD /* gmlassets */,
 				4E58E8211CFC7FDB00422349 /* fejizidan.sks */,
 				4E58E8221CFC7FDB00422349 /* spark.png */,
@@ -75,6 +80,7 @@
 				4E80E9041CFC40C30069DCED /* Assets.xcassets */,
 				4E80E9061CFC40C30069DCED /* LaunchScreen.storyboard */,
 				4E80E9091CFC40C30069DCED /* Info.plist */,
+				4E86030C1CFD71860032ABAD /* AniScene.swift */,
 			);
 			path = SpriteTest;
 			sourceTree = "<group>";
@@ -137,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E8603111CFD788B0032ABAD /* renwu1.atlas in Resources */,
 				4E86030B1CFD34B30032ABAD /* gmlassets in Resources */,
 				4E80E8FC1CFC40C30069DCED /* GameScene.sks in Resources */,
 				4E58E8241CFC7FDB00422349 /* spark.png in Resources */,
@@ -157,6 +164,7 @@
 				4E80E8FE1CFC40C30069DCED /* GameScene.swift in Sources */,
 				4E80E9001CFC40C30069DCED /* GameViewController.swift in Sources */,
 				4E80E8FA1CFC40C30069DCED /* AppDelegate.swift in Sources */,
+				4E86030D1CFD71860032ABAD /* AniScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

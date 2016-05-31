@@ -3,18 +3,21 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "GameScene.createZiDan2() -&gt; ():GameScene.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.children">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "GameScene.(gmlinit in _4F15691A5732C54912789C61526990A0)() -&gt; ():GameScene.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.frame">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AniScene.(beginPeopleAni in _4C49424070AC77B2FC3C4E7971A6421D)(PeopleMoveFangxiang) -&gt; ():AniScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "peopleNode.xScale">
+            </PersistentString>
+            <PersistentString
+               value = "peopleNode.size">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -26,6 +29,22 @@
             </PersistentString>
             <PersistentString
                value = "self.childNodeWithName(&quot;zidan&quot;)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GameScene.createZiDan2() -&gt; ():GameScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.children">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AniScene.touchesMoved(Set&lt;UITouch&gt;, withEvent : UIEvent?) -&gt; ():AniScene.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fangxiangHandler.zRotation">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
