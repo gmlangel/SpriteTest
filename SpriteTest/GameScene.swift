@@ -43,7 +43,6 @@ class GameScene: SKScene {
         feiji.position = CGPoint(x: 50, y: 100);
         feiji.zPosition = 2;
         self.addChild(feiji);
-        
         feijiRunLoopZidan = SKAction.repeatActionForever(SKAction.sequence([
             SKAction.performSelector(Selector("createZiDan"), onTarget: self),
             SKAction.waitForDuration(0.1)
@@ -127,7 +126,7 @@ class GameScene: SKScene {
     func createZiDan2()
     {
         
-        for(var i:Int = 0 ;i<5;i++)
+        for(var i:Int = 0 ;i<5;i++)	
         {
             let xiaoguo = SKSpriteNode(texture: zidanText);
             xiaoguo.position = feiji.position;
