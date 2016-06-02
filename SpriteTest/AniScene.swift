@@ -13,8 +13,9 @@ class AniScene:SKScene {
     
     private var isInited:Bool! = false;
     private var peopleTexts:SKTextureAtlas!;//人物的所有动作文理集合
-    private var peopleNode:SKSpriteNode!;//人物节点
-    private var peopleNodeScale:CGFloat!=1;//0.7;//人物的缩放比
+    //private var peopleNode:SKSpriteNode!;//人物节点
+    private var peoples:[SKSpriteNode]!;
+    private var peopleNodeScale:CGFloat!=0.7;//人物的缩放比
     private var resourceloadend:Bool! = false;
     private var prevosFangxiang:PeopleMoveFangxiang!;//上一次人物移动的方向
     
@@ -30,6 +31,8 @@ class AniScene:SKScene {
     private var leftTexts:[SKTexture]!;
     private var rightTexts:[SKTexture]!;
     private var moveFrameRate:NSTimeInterval! = 1/8;
+    
+    private var bg:SKSpriteNode!;
     override func didMoveToView(view: SKView) {
         
         if(!isInited)
@@ -45,16 +48,30 @@ class AniScene:SKScene {
         self.backgroundColor = UIColor.blackColor();
         self.scaleMode = .ResizeFill;
         
+        bg = SKSpriteNode(color: UIColor.redColor(), size: self.size);
+        bg.anchorPoint = CGPoint(x: 0, y: 0);
+        
+        self.addChild(bg);
+        
         prevosFangxiang = PeopleMoveFangxiang.normal;
         peopleTexts = SKTextureAtlas(named: "renwu1.atlas");
+        peoples = [];
+        
+        let th = CGRectGetHeight((self.view?.frame)!) - 100,tw = CGRectGetWidth((self.view?.frame)!)-100;
+        
         peopleTexts.preloadWithCompletionHandler { () -> Void in
             self.resourceloadend = true;
             //初始化人物
-            self.peopleNode = SKSpriteNode(texture: self.peopleTexts.textureNamed("a_0.png"));
-            self.peopleNode.position = CGPoint(x: CGRectGetMidX((self.view?.frame)!), y: CGRectGetMidY((self.view?.frame)!));
-            self.addChild(self.peopleNode);
-            self.peopleNode.xScale = self.peopleNodeScale;
-            self.peopleNode.yScale = self.peopleNodeScale;
+            for i in 0..<100{
+                let peopleNode = SKSpriteNode(texture: self.peopleTexts.textureNamed("a_0.png"));
+                peopleNode.position = CGPoint(x: 50 + CGFloat(arc4random()%UInt32(tw)), y: 50 + CGFloat(arc4random()%UInt32(th)));
+                self.addChild(peopleNode);
+                peopleNode.xScale = self.peopleNodeScale;
+                peopleNode.yScale = self.peopleNodeScale;
+                peopleNode.physicsBody = SKPhysicsBody(circleOfRadius: 30);
+                peopleNode.physicsBody?.affectedByGravity = false;
+                self.peoples.append(peopleNode);
+            }
         }
         //初始化方向盘
         fangxiangHandler = SKSpriteNode(color: UIColor.clearColor(), size: CGSize(width: 100, height: 100));
@@ -71,17 +88,17 @@ class AniScene:SKScene {
         //给方向盘添加边缘检测
         let arcP = CGPathCreateMutable();
         CGPathAddArc(arcP, nil, 0, 0, 50, 0, CGFloat(M_PI)*2, true);
-        fangxiangHandler.physicsBody = SKPhysicsBody(edgeLoopFromPath: arcP);
-        fangxiangHandler.physicsBody?.usesPreciseCollisionDetection = true;
+        //fangxiangHandler.physicsBody = SKPhysicsBody(edgeLoopFromPath: arcP);
+        //fangxiangHandler.physicsBody?.usesPreciseCollisionDetection = true;
         
         
         //添加方向盘上的按钮
         fangxiangPoint = SKShapeNode(circleOfRadius: 15);
         fangxiangPoint.fillColor = UIColor.grayColor().colorWithAlphaComponent(0.8);
         fangxiangPoint.lineWidth = 0;
-        fangxiangPoint.physicsBody = SKPhysicsBody(circleOfRadius: 15);
-        fangxiangPoint.physicsBody?.affectedByGravity = false;
-        fangxiangPoint.physicsBody?.usesPreciseCollisionDetection = true;
+        //fangxiangPoint.physicsBody = SKPhysicsBody(circleOfRadius: 15);
+        //fangxiangPoint.physicsBody?.affectedByGravity = false;
+        //fangxiangPoint.physicsBody?.usesPreciseCollisionDetection = true;
         fangxiangHandler.addChild(fangxiangPoint);
         
         //初始化移动方向动画
@@ -107,12 +124,19 @@ class AniScene:SKScene {
     private var tempPAng:CGFloat! = 0;
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         moveFangXiangPoint(touches);
+        let point = (touches.first?.locationInNode(self))!;
+        let p2 = (touches.first?.previousLocationInNode(self))!;
+        //移动场景
+        self.anchorPoint.x = self.anchorPoint.x + (p2.x - point.x)/self.frame.size.width;
+        self.anchorPoint.y = self.anchorPoint.y + (p2.y - point.y)/self.frame.size.height;
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         fangxiangPoint.position.x = 0;
         fangxiangPoint.position.y = 0;
         beginPeopleAni(gGetFangxiang());
+        
+        
     }
     
     //手柄上的控制点跟随手指移动
@@ -120,10 +144,10 @@ class AniScene:SKScene {
     {
         let p = (touches.first?.locationInNode(fangxiangHandler))!;
         // NSLog("\(atan2(p.y, p.x) * 180 / CGFloat(M_PI))");
-        if(sqrt(pow(p.x, 2) + pow(p.y, 2)) > 35){
+        if(sqrt(pow(p.x, 2) + pow(p.y, 2)) > 45){
             tempPAng = atan2(p.y, p.x);
-            fangxiangPoint.position.x = cos(tempPAng) * 35;
-            fangxiangPoint.position.y = sin(tempPAng) * 35;
+            fangxiangPoint.position.x = cos(tempPAng) * 45;
+            fangxiangPoint.position.y = sin(tempPAng) * 45;
         }else{
             fangxiangPoint.position = p;
         }
@@ -160,6 +184,38 @@ class AniScene:SKScene {
     /**
      移动人物
      */
+//    private func beginPeopleAni(fangxiang:PeopleMoveFangxiang)
+//    {
+//        //如果方向没有发生变化，则不停止当前的动画
+//        if(prevosFangxiang == fangxiang)
+//        {
+//            return ;
+//        }
+//        peopleNode.removeActionForKey("peopleMove");
+//        switch(fangxiang)
+//        {
+//        case .up:
+//            peopleNode.runAction(upSK, withKey: "peopleMove");
+//            break;
+//        case .down:
+//            peopleNode.runAction(downSK, withKey: "peopleMove");
+//            break;
+//        case .left:
+//            peopleNode.runAction(leftSK, withKey: "peopleMove");
+//            break;
+//        case .right:
+//            peopleNode.runAction(rightSK, withKey: "peopleMove");
+//            break;
+//        default:
+//            peopleNode.texture = getTextureByFangxiang(prevosFangxiang);
+//            peopleNode.size.width = peopleNode.texture!.size().width * peopleNodeScale;
+//            peopleNode.size.height = peopleNode.texture!.size().height * peopleNodeScale;
+//            break;
+//        }
+//        prevosFangxiang = fangxiang;
+//    }
+    
+    
     private func beginPeopleAni(fangxiang:PeopleMoveFangxiang)
     {
         //如果方向没有发生变化，则不停止当前的动画
@@ -167,29 +223,43 @@ class AniScene:SKScene {
         {
             return ;
         }
-        peopleNode.removeActionForKey("peopleMove");
+        for tn in peoples{
+            tn.removeActionForKey("peopleMove");
+        }
         switch(fangxiang)
         {
         case .up:
-            peopleNode.runAction(upSK, withKey: "peopleMove");
+            for tn in peoples{
+                tn.runAction(upSK, withKey: "peopleMove");
+            }
             break;
         case .down:
-            peopleNode.runAction(downSK, withKey: "peopleMove");
+            for tn in peoples{
+                tn.runAction(downSK, withKey: "peopleMove");
+            }
             break;
         case .left:
-            peopleNode.runAction(leftSK, withKey: "peopleMove");
+            for tn in peoples{
+                tn.runAction(leftSK, withKey: "peopleMove");
+            }
             break;
         case .right:
-            peopleNode.runAction(rightSK, withKey: "peopleMove");
+            for tn in peoples{
+                tn.runAction(rightSK, withKey: "peopleMove");
+            }
             break;
         default:
-            peopleNode.texture = getTextureByFangxiang(prevosFangxiang);
-            peopleNode.size.width = peopleNode.texture!.size().width * peopleNodeScale;
-            peopleNode.size.height = peopleNode.texture!.size().height * peopleNodeScale;
+            for tn in peoples{
+                tn.texture = getTextureByFangxiang(prevosFangxiang);
+                tn.size.width = tn.texture!.size().width * peopleNodeScale;
+                tn.size.height = tn.texture!.size().height * peopleNodeScale;
+            }
+            
             break;
         }
         prevosFangxiang = fangxiang;
     }
+    
     
     private func getTextureByFangxiang(fangxiang:PeopleMoveFangxiang)->SKTexture
     {
